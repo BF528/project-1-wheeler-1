@@ -41,8 +41,8 @@ rm('dif_df', 'mapping', 'l2fc')
 gs_df = gs_df[order(-gs_df$l2fc, -gs_df$p_adjusted_bio),]
 gs_df = gs_df[!duplicated(gs_df$SYMBOL),]
 
-print(head(gs_df, 10))
-print(tail(gs_df, 10))
+write.csv(head(gs_df, 10), "tables\\up_reg.csv")
+write.csv(tail(gs_df, 10), "tables\\down_reg.csv")
 
 topk = head(gs_df, 1000)
 botk = tail(gs_df, 1000)
@@ -60,6 +60,8 @@ print(paste('GO Collection Size: ', length(gocol)))
 # Part 5, Fisher Test
 
 N = nrow(gs_df)
+print(paste("Total Genes: ", N))
+
 
 fisher_sum = function(expressed, gene_set) {
   k = length(intersect(gene_set@geneIds, expressed))
@@ -88,13 +90,13 @@ KeggTopDF = gatherem(topk, keggcol)
 GoTopDF = gatherem(topk, gocol)
 
 print(paste('Hallmark Significantly Enriched Up: ', sum(HallTopDF$p_adj < 0.05)))
-print(head(HallTopDF[order(HallTopDF$p_nom),], 50))
+write.csv(head(HallTopDF[order(HallTopDF$p_nom),], 3), "tables\\HallTop3.csv")
 
 print(paste('KEGG Significantly Enriched Up: ', sum(KeggTopDF$p_adj < 0.05)))
-print(head(KeggTopDF[order(KeggTopDF$p_nom),], 3))
+write.csv(head(KeggTopDF[order(KeggTopDF$p_nom),], 3), "tables\\KeggTop3.csv")
 
 print(paste('GO Significantly Enriched Up: ', sum(GoTopDF$p_adj < 0.05)))
-print(head(GoTopDF[order(GoTopDF$p_nom),], 3))
+write.csv(head(GoTopDF[order(GoTopDF$p_nom),], 3), "tables\\GoTop3.csv")
 
 
 HallBotDF = gatherem(botk, hallcol)
@@ -102,10 +104,10 @@ KeggBotDF = gatherem(botk, keggcol)
 GoBotDF = gatherem(botk, gocol)
 
 print(paste('Hallmark Significantly Enriched Down: ', sum(HallBotDF$p_adj < 0.05)))
-print(head(HallBotDF[order(HallBotDF$p_nom),], 3))
+write.csv(head(HallBotDF[order(HallBotDF$p_nom),], 3), "tables\\HallBot3.csv")
 
 print(paste('KEGG Significantly Enriched Down: ', sum(KeggBotDF$p_adj < 0.05)))
-print(head(KeggBotDF[order(KeggBotDF$p_nom),], 3))
+write.csv(head(KeggBotDF[order(KeggBotDF$p_nom),], 3), "tables\\KeggBot3.csv")
 
 print(paste('GO Significantly Enriched Down: ', sum(GoBotDF$p_adj < 0.05)))
-print(head(GoBotDF[order(GoBotDF$p_nom),], 3))
+write.csv(head(GoBotDF[order(GoBotDF$p_nom),], 3), "tables\\GoBot3.csv")
