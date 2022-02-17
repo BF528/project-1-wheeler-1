@@ -15,3 +15,5 @@ Alice Zheng
 # Repository Contents
 
 Provide a brief description of each script/code file in this repo, what it does, and how to execute it
+
+programmer_code.R contains the entire R script necessary to produce the results of the programmer's section (median NUSE plot, median RLE plot, comma separated file containing the RMA normalized, ComBat adjusted gene expression values, aplot of PC1 vs PC2)
