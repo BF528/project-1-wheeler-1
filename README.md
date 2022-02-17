@@ -1,10 +1,13 @@
 # Project Description
 
-A brief description of what this repository is for and what it contains
+This project reproduces the findings of Marisa, et al., demonstrating a reproducible molecular classification method based on genome-wide mRNA expression analysis to diagnose prognostic biomarkers of CRC patients. 
 
 # Contributors
 
-List contributor names and github user names, or email addresses if desired
+Kyler Anderson
+Poorva Juneja
+Priyanka Chary
+Alice Zheng
 
 # Repository Contents
 
