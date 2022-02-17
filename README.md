@@ -5,8 +5,11 @@ This project reproduces the findings of Marisa, et al., demonstrating a reproduc
 # Contributors
 
 Kyler Anderson
+
 Poorva Juneja
+
 Priyanka Chary
+
 Alice Zheng
 
 # Repository Contents
